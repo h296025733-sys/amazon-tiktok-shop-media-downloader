@@ -1,0 +1,103 @@
+{
+  "manifest_version": 3,
+  "name": "商品素材助手",
+  "version": "0.4.0",
+  "description": "从 Amazon 与 TikTok Shop 商品页提取原始 SKU 图片和商品视频。",
+  "minimum_chrome_version": "127",
+  "permissions": [
+    "activeTab",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://*.amazon.com/*",
+    "https://*.amazon.co.uk/*",
+    "https://*.amazon.ca/*",
+    "https://*.amazon.com.mx/*",
+    "https://*.amazon.com.br/*",
+    "https://*.amazon.de/*",
+    "https://*.amazon.fr/*",
+    "https://*.amazon.it/*",
+    "https://*.amazon.es/*",
+    "https://*.amazon.nl/*",
+    "https://*.amazon.se/*",
+    "https://*.amazon.pl/*",
+    "https://*.amazon.com.be/*",
+    "https://*.amazon.co.jp/*",
+    "https://*.amazon.in/*",
+    "https://*.amazon.com.au/*",
+    "https://*.amazon.sg/*",
+    "https://*.amazon.ae/*",
+    "https://*.amazon.sa/*",
+    "https://*.amazon.com.tr/*",
+    "https://*.amazon.eg/*",
+    "https://*.tiktok.com/*",
+    "https://*.tiktokcdn.com/*",
+    "https://*.tiktokcdn-us.com/*",
+    "https://*.tiktokv.com/*",
+    "https://*.tiktokv.us/*",
+    "https://*.tiktokw.us/*",
+    "https://*.byteoversea.com/*",
+    "https://*.ibytedtos.com/*",
+    "https://*.ibyteimg.com/*",
+    "https://*.byteimg.com/*",
+    "https://*.ttcdn-us.com/*",
+    "https://*.ttlstatic.com/*",
+    "https://*.ttwstatic.com/*",
+    "https://*.tiktokglobalshop.us/*",
+    "https://*.media-amazon.com/*",
+    "https://*.ssl-images-amazon.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "action": {
+    "default_title": "商品素材助手",
+    "default_popup": "src/popup.html"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Z"
+      },
+      "description": "打开商品素材选择器"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.amazon.com/*",
+        "https://*.amazon.co.uk/*",
+        "https://*.amazon.ca/*",
+        "https://*.amazon.com.mx/*",
+        "https://*.amazon.com.br/*",
+        "https://*.amazon.de/*",
+        "https://*.amazon.fr/*",
+        "https://*.amazon.it/*",
+        "https://*.amazon.es/*",
+        "https://*.amazon.nl/*",
+        "https://*.amazon.se/*",
+        "https://*.amazon.pl/*",
+        "https://*.amazon.com.be/*",
+        "https://*.amazon.co.jp/*",
+        "https://*.amazon.in/*",
+        "https://*.amazon.com.au/*",
+        "https://*.amazon.sg/*",
+        "https://*.amazon.ae/*",
+        "https://*.amazon.sa/*",
+        "https://*.amazon.com.tr/*",
+        "https://*.amazon.eg/*",
+        "https://*.tiktok.com/*"
+      ],
+      "js": [
+        "src/media-utils.js",
+        "src/site-profiles.js",
+        "src/content.js",
+        "src/page-toolbar.js"
+      ],
+      "css": [
+        "src/page-toolbar.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

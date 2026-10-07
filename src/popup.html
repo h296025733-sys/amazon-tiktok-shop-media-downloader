@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>商品素材助手</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">↓</span>
+          <div>
+            <h1>商品素材助手</h1>
+            <p id="siteLine">正在识别商品页…</p>
+          </div>
+        </div>
+        <button id="refreshButton" class="icon-button" type="button" title="重新扫描" aria-label="重新扫描">↻</button>
+      </header>
+
+      <section id="loadingState" class="state-card">
+        <span class="spinner" aria-hidden="true"></span>
+        <span>正在寻找原始素材</span>
+      </section>
+
+      <section id="unsupportedState" class="state-card hidden">
+        <strong>这里还不是支持的商品页</strong>
+        <span>请打开 Amazon 商品详情页或 TikTok Shop 商品页后重试。</span>
+      </section>
+
+      <section id="errorState" class="state-card hidden">
+        <strong>暂时无法读取这个页面</strong>
+        <span id="errorMessage">刷新商品页后再试一次。</span>
+      </section>
+
+      <section id="resultState" class="result hidden">
+        <div class="product-line">
+          <div>
+            <span class="eyebrow">当前 SKU</span>
+            <strong id="skuText">—</strong>
+          </div>
+          <span id="qualityBadge" class="badge">优先原始源</span>
+        </div>
+        <p id="variantText" class="variant hidden"></p>
+
+        <div class="toolbar">
+          <div class="segmented" role="tablist" aria-label="素材类型">
+            <button class="filter active" type="button" data-filter="all">全部 <span id="allCount">0</span></button>
+            <button class="filter" type="button" data-filter="sku">SKU <span id="skuCount">0</span></button>
+            <button class="filter" type="button" data-filter="display">展示 <span id="displayCount">0</span></button>
+            <button class="filter" type="button" data-filter="detail">详情 <span id="detailCount">0</span></button>
+            <button class="filter" type="button" data-filter="video">视频 <span id="videoCount">0</span></button>
+          </div>
+        </div>
+
+        <div id="mediaGrid" class="media-grid" aria-live="polite"></div>
+        <div id="emptyState" class="empty hidden">这个商品页暂未发现可直接下载的素材。</div>
+      </section>
+
+      <footer class="footer">
+        <span id="selectionText">已选 0 项</span>
+        <button id="downloadButton" class="primary-button" type="button" disabled>
+          <span>下载所选</span>
+          <span id="downloadCount" class="button-count">0</span>
+        </button>
+      </footer>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

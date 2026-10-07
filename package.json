@@ -1,0 +1,9 @@
+{
+  "name": "amazon-tiktok-shop-media-downloader",
+  "version": "0.4.0",
+  "private": true,
+  "scripts": {
+    "check": "node --check src/media-utils.js && node --check src/site-profiles.js && node --check src/content.js && node --check src/page-toolbar.js && node --check src/background.js && node --check src/popup.js",
+    "test": "node --test tests/*.test.js"
+  }
+}
